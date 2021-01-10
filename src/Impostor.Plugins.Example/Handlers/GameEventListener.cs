@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Impostor.Api.Events;
 
 namespace Impostor.Plugins.Example.Handlers
@@ -15,6 +15,7 @@ namespace Impostor.Plugins.Example.Handlers
         public void OnGameCreated(IGameCreatedEvent e)
         {
             Console.WriteLine("Game > created");
+            e.Game.Host.Character.SendChatAsync("GAME CREATED UWU.");
         }
 
         [EventListener]

@@ -4,12 +4,9 @@ using Impostor.Api.Games;
 using Impostor.Api.Innersloth;
 using Impostor.Api.Net.Messages;
 
-namespace Impostor.Server.Net.Inner.Objects
-{
-    internal partial class InnerPlayerInfo
-    {
-        public InnerPlayerInfo(byte playerId)
-        {
+namespace Impostor.Server.Net.Inner.Objects {
+    internal partial class InnerPlayerInfo {
+        public InnerPlayerInfo(byte playerId) {
             PlayerId = playerId;
         }
 
@@ -43,23 +40,19 @@ namespace Impostor.Server.Net.Inner.Objects
 
         public DateTimeOffset LastMurder { get; set; }
 
-        public bool CanMurder(IGame game)
-        {
-            if (!IsImpostor)
-            {
+        public bool CanMurder(IGame game) {
+            if (!IsImpostor) {
                 return false;
             }
 
             return DateTimeOffset.UtcNow.Subtract(LastMurder).TotalSeconds >= game.Options.KillCooldown;
         }
 
-        public void Serialize(IMessageWriter writer)
-        {
+        public void Serialize(IMessageWriter writer) {
             throw new NotImplementedException();
         }
 
-        public void Deserialize(IMessageReader reader)
-        {
+        public void Deserialize(IMessageReader reader) {
             PlayerName = reader.ReadString();
             ColorId = reader.ReadByte();
             HatId = reader.ReadPackedUInt32();
@@ -70,8 +63,7 @@ namespace Impostor.Server.Net.Inner.Objects
             IsImpostor = (flag & 2) > 0;
             IsDead = (flag & 4) > 0;
             var taskCount = reader.ReadByte();
-            for (var i = 0; i < taskCount; i++)
-            {
+            for (var i = 0; i < taskCount; i++) {
                 Tasks[i] ??= new InnerGameData.TaskInfo();
                 Tasks[i].Deserialize(reader);
             }

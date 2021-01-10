@@ -41,7 +41,7 @@ namespace Impostor.Api.Games
 
         public static GameCode Create()
         {
-            return new GameCode(GameCodeParser.GenerateCode(6));
+            return new GameCode(GameCodeParser.GenerateCode(4));
         }
 
         public static GameCode From(int value) => new GameCode(value);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace Impostor.Patcher.Shared
     public class AmongUsModifier
     {
         private const uint AppId = 945360;
-        public const string DefaultRegionName = "Impostor";
+        public const string DefaultRegionName = "Emergency Meeting";
         public const ushort DefaultPort = 22023;
 
         private readonly string _amongUsDir;
